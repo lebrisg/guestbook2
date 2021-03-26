@@ -11,5 +11,5 @@ spec:
   port: http
   scheme: http
   selector:
-  matchLabels:
+    matchLabels:
       project: guestbook2
