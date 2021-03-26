@@ -79,6 +79,15 @@ initDb(function(err){
   console.log('Error connecting to Mongo. Message:\n'+err);
 });
 
+// Use the prom-client module to expose our metrics to Prometheus
+const client = require('prom-client');
+
+// Enable prom-client to expose default application metrics
+const collectDefaultMetrics = client.collectDefaultMetrics;
+
+// Define a custom prefix string for application metrics
+collectDefaultMetrics({ prefix: 'guestbook2:' });
+
 var entries = [];
 app.locals.entries = entries;
 
@@ -109,6 +118,12 @@ app.post("/new-entry", function(request, response) {
 
 app.use(function(request, response) {
   response.status(404).render("404");
+});
+
+// Expose our metrics at the default URL for Prometheus
+app.get('/metrics', async (req, res) => {
+  res.set('Content-Type', client.register.contentType);
+  res.send(await client.register.metrics());
 });
 
 http.createServer(app).listen(8080, function() {

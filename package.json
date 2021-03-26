@@ -9,6 +9,7 @@
     "ejs": "^2.6.1",
     "morgan": "^1.9.0",
     "mongodb": "^2.1.16",
+    "prom-client": "^13.1.0",
     "body-parser": "^1.18.3"
   },
   "scripts": {
