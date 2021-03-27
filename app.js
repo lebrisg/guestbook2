@@ -111,13 +111,9 @@ app.get("/display", function(request, response) {
     var col = db.collection('records');
     // Count row number
     col.count(function(err, count) {
-      if (err) {
-        console.log('Error running count. Message:\n'+err);
-      }
-      console.log('Count: ',count);
+      if (err) console.log('Error running count. Message:\n'+err);
+      console.log('Count: ', count);
     });
-  } else {
-    console.log('Count: 0');
   }
   response.render("index");
 });
