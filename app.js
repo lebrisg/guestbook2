@@ -95,6 +95,9 @@ app.use(logger("dev"));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// Load rYecords in memory
+loadDB();
+
 app.get("/", function(request, response) {
   response.render("index");
 });
@@ -114,8 +117,7 @@ app.post("/new-entry", function(request, response) {
     published: new Date()
   });
 
-  // Try to initialize the db on every request if it's not already
-  // initialized.
+  // Try to initialize the db on every request if it's not already initialized.
   if (!db) {
     initDb(function(err){});
   }
@@ -142,3 +144,18 @@ app.get('/metrics', async (req, res) => {
 http.createServer(app).listen(8080, function() {
   console.log("Guestbook app started on port 8080.");
 });
+
+// Load records in memory
+function loadDB() {
+  // Try to initialize the db on every request if it's not already initialized.
+  if (!db) {
+    initDb(function(err){});
+  }
+  if (db) {
+    // Create a new collection called records
+    var col = db.collection('records');
+
+    col.find().toArray(function(err, entries));
+
+  } 
+}
