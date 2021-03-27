@@ -95,7 +95,7 @@ app.use(logger("dev"));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// Load rYecords in memory
+// Load records in memory
 loadDB();
 
 app.get("/", function(request, response) {
@@ -103,7 +103,23 @@ app.get("/", function(request, response) {
 });
 
 app.get("/display", function(request, response) {
-  response.render("index");
+  // Try to initialize the db on every request if it's not already initialized.
+  if (!db) {
+    initDb(function(err){});
+  }
+  if (db) {
+    var col = db.collection('records');
+    // Create a document
+    col.count(function(err, count){
+      if (err) {
+        console.log('Error running count. Message:\n'+err);
+      }
+      document.write(count);
+    });
+  } else {
+    document.write(0);
+  }
+  //response.render("index");
 });
 
 app.get("/new-entry", function(request, response) {
