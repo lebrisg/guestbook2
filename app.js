@@ -176,6 +176,8 @@ function loadDb() {
     // Create a new collection called records
     var col = db.collection('records');
 
+    console.log('count: ', col.count());
+
     col.find().toArray(function(err, docs) {
       if (err) throw err;
       entries = docs;
