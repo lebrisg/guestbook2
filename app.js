@@ -114,7 +114,7 @@ app.get("/display", function(request, response) {
       if (err) {
         console.log('Error running count. Message:\n'+err);
       }
-      console.log('Count: ",count);
+      console.log('Count: ',count);
     });
   } else {
     console.log('Count: 0');
