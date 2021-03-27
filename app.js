@@ -91,13 +91,14 @@ collectDefaultMetrics({ prefix: 'guestbook2:' });
 var entries = [];
 app.locals.entries = entries;
 
+// Display requests at the console
 app.use(morgan("combined"));
-// app.use(morgan("dev"));
 
+// Parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Load records in memory
-loadDB();
+loadDb();
 
 app.get("/", function(request, response) {
   response.render("index");
@@ -111,10 +112,13 @@ app.get("/display", function(request, response) {
   if (db) {
     var col = db.collection('records');
     // Count row number
-    col.count(function(err, count) {
-      if (err) console.log('Error running count. Message:\n'+err);
-      console.log('Count: ', count);
-    });
+    //col.count(function(err, count) {
+    //  if (err) console.log('Error running count. Message:\n'+err);
+    //  console.log('Count: ', count);
+    //});
+   
+    console.log('count=', entries.length()); 
+    //col.find();
   }
   response.render("index");
 });
@@ -163,7 +167,7 @@ http.createServer(app).listen(8080, function() {
 });
 
 // Load records in memory
-function loadDB() {
+function loadDb() {
   // Try to initialize the db on every request if it's not already initialized.
   if (!db) {
     initDb(function(err){});
