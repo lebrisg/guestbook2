@@ -91,7 +91,8 @@ collectDefaultMetrics({ prefix: 'guestbook2:' });
 var entries = [];
 app.locals.entries = entries;
 
-app.use(logger("dev"));
+app.use(logger("combined"));
+// app.use(logger("dev"));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
