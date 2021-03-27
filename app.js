@@ -114,10 +114,10 @@ app.get("/display", function(request, response) {
       if (err) {
         console.log('Error running count. Message:\n'+err);
       }
-      document.write(count);
+      console.log(count);
     });
   } else {
-    document.write(0);
+    console.log(0);
   }
   //response.render("index");
 });
