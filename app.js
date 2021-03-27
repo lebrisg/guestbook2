@@ -113,6 +113,19 @@ app.post("/new-entry", function(request, response) {
     body: request.body.body,
     published: new Date()
   });
+
+  // Try to initialize the db on every request if it's not already
+  // initialized.
+  if (!db) {
+    initDb(function(err){});
+  }
+  if (db) {
+    // Create a new collection called records
+    var col = db.collection('records');
+
+    // Create a record with the title and the body
+    col.insert({title: request.body.title, body: request.body.body, published: Date.now()});
+  }
   response.redirect("/");
 });
 
