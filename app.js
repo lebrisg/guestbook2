@@ -155,7 +155,9 @@ function loadDB() {
     // Create a new collection called records
     var col = db.collection('records');
 
-    col.find().toArray(function(err, entries));
-
+    col.find().toArray(function(err, docs) {
+      if (err) throw err;
+      entries = docs;
+    });
   } 
 }
