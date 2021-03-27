@@ -119,7 +119,7 @@ app.get("/display", function(request, response) {
   } else {
     console.log('Count: 0');
   }
-  //response.render("index");
+  response.render("index");
 });
 
 app.get("/new-entry", function(request, response) {
