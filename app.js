@@ -117,7 +117,7 @@ app.get("/display", function(request, response) {
     //  console.log('Count: ', count);
     //});
    
-    console.log('count=', entries.length()); 
+    console.log('count=', entries.length); 
     //col.find();
   }
   response.render("index");
