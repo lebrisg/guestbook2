@@ -102,6 +102,10 @@ app.get("/", function(request, response) {
   response.render("index");
 });
 
+app.get("/display", function(request, response) {
+  response.render("index");
+});
+
 app.get("/new-entry", function(request, response) {
   response.render("new-entry");
 });
@@ -140,11 +144,6 @@ app.get('/metrics', async (req, res) => {
   res.set('Content-Type', client.register.contentType);
   res.send(await client.register.metrics());
 });
-
-app.get("/display", function(request, response) {
-  response.render("index");
-});
-
 
 http.createServer(app).listen(8080, function() {
   console.log("Guestbook app started on port 8080.");
