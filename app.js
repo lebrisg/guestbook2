@@ -1,7 +1,7 @@
 var http = require("http");
 var path = require("path");
 var express = require("express");
-var logger = require("morgan");
+var morgan = require("morgan");
 var bodyParser = require("body-parser");
 var app = express();
 
@@ -91,8 +91,8 @@ collectDefaultMetrics({ prefix: 'guestbook2:' });
 var entries = [];
 app.locals.entries = entries;
 
-app.use(logger("combined"));
-// app.use(logger("dev"));
+app.use(morgan("combined"));
+// app.use(morgan("dev"));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
