@@ -141,6 +141,11 @@ app.get('/metrics', async (req, res) => {
   res.send(await client.register.metrics());
 });
 
+app.get("/display", function(request, response) {
+  response.render("index");
+});
+
+
 http.createServer(app).listen(8080, function() {
   console.log("Guestbook app started on port 8080.");
 });
