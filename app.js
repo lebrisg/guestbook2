@@ -109,15 +109,15 @@ app.get("/display", function(request, response) {
   }
   if (db) {
     var col = db.collection('records');
-    // Create a document
-    col.count(function(err, count){
+    // Count row number
+    col.count(function(err, count) {
       if (err) {
         console.log('Error running count. Message:\n'+err);
       }
-      console.log(count);
+      console.log('Count: ",count);
     });
   } else {
-    console.log(0);
+    console.log('Count: 0');
   }
   //response.render("index");
 });
