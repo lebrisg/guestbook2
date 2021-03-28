@@ -75,7 +75,7 @@ var initDb = function(callback) {
   });
 };
 
-initDb(function(err){
+initDb(function(err) {
   console.log('Error connecting to Mongo. Message:\n'+err);
 });
 
@@ -178,9 +178,17 @@ function loadDb() {
 
     console.log('count: ', col.count());
 
-    col.find().toArray(function(err, docs) {
-      if (err) throw err;
-      entries = docs;
-    });
+    col.find(function(err, data) {
+      if(err) console.log(err);
+
+      data.forEach(function(result) {
+        entries.push(result);
+      })
+      console.log(entries);
+    })
+//    col.find().toArray(function(err, docs) {
+//      if (err) throw err;
+//      entries = docs;
+//    });
   } 
 }
