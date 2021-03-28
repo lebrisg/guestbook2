@@ -118,6 +118,7 @@ app.get("/display", function(request, response) {
     //});
    
     console.log('count=', entries.length); 
+    console.log('count=', col.count()); 
     //col.find();
   }
   response.render("index");
