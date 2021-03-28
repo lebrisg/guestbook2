@@ -118,7 +118,7 @@ app.get("/display", function(request, response) {
     //});
    
     console.log('count=', entries.length); 
-    console.log('count=', col.count()); 
+    // console.log('count=', col.count()); 
     //col.find();
   }
   response.render("index");
@@ -173,6 +173,7 @@ function loadDb() {
   if (!db) {
     initDb(function(err){});
   }
+  console.log('Test');
   if (db) {
     // Create a new collection called records
     var col = db.collection('records');
