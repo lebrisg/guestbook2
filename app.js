@@ -164,15 +164,15 @@ app.get('/metrics', async (req, res) => {
 });
 
 http.createServer(app).listen(8080, function() {
-  console.log("Guestbook app started on port 8080.");
+  console.log("Guestbook2 app started on port 8080.");
 });
 
 // Load records in memory
 function loadDb() {
   // Try to initialize the db on every request if it's not already initialized.
-  if (!db) {
-    initDb(function(err){});
-  }
+  //if (!db) {
+  //  initDb(function(err){});
+  //}
   console.log('Test');
   if (db) {
     // Create a new collection called records
