@@ -3,6 +3,7 @@ var path = require("path");
 var express = require("express");
 var morgan = require("morgan");
 var bodyParser = require("body-parser");
+var mongodb = require('mongodb');
 var app = express();
 
 app.set("views", path.resolve(__dirname, "views"));
@@ -54,31 +55,6 @@ if (mongoURL == null) {
 var db = null,
     dbDetails = new Object();
 
-var initDb = function(callback) {
-  if (mongoURL == null) return;
-
-  var mongodb = require('mongodb');
-  if (mongodb == null) return;
-
-  mongodb.connect(mongoURL, function(err, conn) {
-    if (err) {
-      callback(err);
-      return;
-    }
-
-    db = conn;
-    dbDetails.databaseName = db.databaseName;
-    dbDetails.url = mongoURLLabel;
-    dbDetails.type = 'MongoDB';
-
-    console.log('Connected to MongoDB at: %s', mongoURL);
-  });
-};
-
-initDb(function(err) {
-  console.log('Error connecting to Mongo. Message:\n'+err);
-});
-
 // Use the prom-client module to expose our metrics to Prometheus
 const client = require('prom-client');
 
@@ -97,6 +73,9 @@ app.use(morgan("combined"));
 // Parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// Set the MongoDB connection
+initDb();
+
 // Load records in memory
 loadDb();
 
@@ -106,9 +85,9 @@ app.get("/", function(request, response) {
 
 app.get("/display", function(request, response) {
   // Try to initialize the db on every request if it's not already initialized.
-  if (!db) {
-    initDb(function(err){});
-  }
+  //if (!db) {
+  //  initDb(function(err){});
+  //}
   if (db) {
     var col = db.collection('records');
     // Count row number
@@ -140,9 +119,9 @@ app.post("/new-entry", function(request, response) {
   });
 
   // Try to initialize the db on every request if it's not already initialized.
-  if (!db) {
-    initDb(function(err){});
-  }
+  //if (!db) {
+  //  initDb(function(err){});
+  //}
   if (db) {
     // Create a new collection called records
     var col = db.collection('records');
@@ -166,6 +145,22 @@ app.get('/metrics', async (req, res) => {
 http.createServer(app).listen(8080, function() {
   console.log("Guestbook2 app started on port 8080.");
 });
+
+function initDb() {
+  mongodb.connect(mongoURL, function(err, conn) {
+    if (err) {
+      console.log("Can't connect to MongoDB!");
+      return;
+    }
+
+    db = conn;
+    dbDetails.databaseName = db.databaseName;
+    dbDetails.url = mongoURLLabel;
+    dbDetails.type = 'MongoDB';
+
+    console.log('Connected to MongoDB at: %s', mongoURL);
+  });
+};
 
 // Load records in memory
 function loadDb() {
