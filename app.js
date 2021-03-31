@@ -169,6 +169,7 @@ function loadDb() {
   //  initDb(function(err){});
   //}
   console.log('Test');
+  console.log('db=', db);
   if (db) {
     // Create a new collection called records
     var col = db.collection('records');
