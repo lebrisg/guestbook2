@@ -6,7 +6,7 @@ var bodyParser = require("body-parser");
 var mongodb = require('mongodb');
 var app = express();
 
-app.set("views", path.resolve(__dirname, "views"));
+app.set("views", path.resolve(__dirname, "views")); // path.resolve or path.join?
 app.set("view engine", "ejs");
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
@@ -173,6 +173,7 @@ function loadDb() {
     // Create a new collection called records
     var col = db.collection('records');
 
+    console.log('test2');
     col.find().toArray((err, result) => {
       console.log(JSON.stringify(result));
     }); 
