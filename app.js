@@ -95,10 +95,6 @@ app.post("/new-entry", function(request, response) {
     published: new Date()
   });
 
-  // Try to initialize the db on every request if it's not already initialized.
-  //if (!db) {
-  //  initDb(function(err){});
-  //}
   if (db) {
     // Create a new collection called records
     var col = db.collection('records');
@@ -107,6 +103,10 @@ app.post("/new-entry", function(request, response) {
     col.insert({title: request.body.title, body: request.body.body, published: Date.now()});
   }
   response.redirect("/");
+});
+
+app.get("/delete-entry", function(request, response) {
+  response.render("index");
 });
 
 app.use(function(request, response) {
