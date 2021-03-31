@@ -165,6 +165,7 @@ function initDb() {
     console.log('test2');
     col.find().toArray((err, result) => {
       console.log(JSON.stringify(result));
+    });
   });
 };
 
