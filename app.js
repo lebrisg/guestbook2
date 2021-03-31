@@ -140,9 +140,13 @@ function initDb() {
     let col = db.collection('records');
 
     col.find().toArray((err, result) => {
-      console.log(JSON.stringify(result));
+      //console.log(JSON.stringify(result));
       result.forEach(function(entry) {
-        entries.push(entry);
+        entries.push({
+          title: entry.title,
+          body: entry.body,
+          published: entry.published 
+        });
       });
       //console.log(JSON.stringify(entries));
     });
