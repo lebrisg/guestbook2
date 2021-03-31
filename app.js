@@ -77,7 +77,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 initDb();
 
 // Load records in memory
-loadDb();
+//loadDb();
 
 app.get("/", function(request, response) {
   response.render("index");
@@ -159,6 +159,12 @@ function initDb() {
     dbDetails.type = 'MongoDB';
 
     console.log('Connected to MongoDB at: %s', mongoURL);
+    
+    let col = db.collection('records');
+
+    console.log('test2');
+    col.find().toArray((err, result) => {
+      console.log(JSON.stringify(result));
   });
 };
 
