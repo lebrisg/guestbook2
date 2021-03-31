@@ -145,7 +145,7 @@ function initDb() {
         entries.push({
           title: entry.title,
           body: entry.body,
-          published: entry.published 
+          published: entry.published.toUTCString() 
         });
       });
       //console.log(JSON.stringify(entries));
