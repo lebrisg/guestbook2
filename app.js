@@ -106,7 +106,8 @@ app.post("/new-entry", function(request, response) {
 });
 
 app.get("/delete-entry", function(request, response) {
-  response.render("index");
+  //response.render("index");
+  response.redirect("/");
 });
 
 app.use(function(request, response) {
