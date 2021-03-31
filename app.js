@@ -76,30 +76,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Set the MongoDB connection
 initDb();
 
-// Load records in memory
-//loadDb();
-
 app.get("/", function(request, response) {
-  response.render("index");
-});
-
-app.get("/display", function(request, response) {
-  // Try to initialize the db on every request if it's not already initialized.
-  //if (!db) {
-  //  initDb(function(err){});
-  //}
-  if (db) {
-    var col = db.collection('records');
-    // Count row number
-    //col.count(function(err, count) {
-    //  if (err) console.log('Error running count. Message:\n'+err);
-    //  console.log('Count: ', count);
-    //});
-   
-    console.log('count=', entries.length); 
-    // console.log('count=', col.count()); 
-    //col.find();
-  }
   response.render("index");
 });
 
@@ -162,54 +139,12 @@ function initDb() {
     
     let col = db.collection('records');
 
-    console.log('test2');
     col.find().toArray((err, result) => {
-      console.log(JSON.stringify(result));
+      //console.log(JSON.stringify(result));
       result.forEach(function(entry) {
         entries.push(entry);
       });
-      console.log('result=');
-      console.log(JSON.stringify(entries));
+      //console.log(JSON.stringify(entries));
     });
   });
 };
-
-// Load records in memory
-function loadDb() {
-  // Try to initialize the db on every request if it's not already initialized.
-  //if (!db) {
-  //  initDb(function(err){});
-  //}
-  console.log('Test');
-  console.log('db=', db);
-  if (db) {
-    // Create a new collection called records
-    var col = db.collection('records');
-
-    console.log('test2');
-    col.find().toArray((err, result) => {
-      console.log(JSON.stringify(result));
-      result.forEach(function(entry) {
-        entries.push(entry);
-      });
-      console.log('result=');
-      console.log(JSON.stringify(entries));
-    }); 
-
-//    console.log('count: ', col.count());
-
-//    col.find(function(err, data) {
-//      if(err) console.log(err);
-
-//      data.forEach(function(result) {
-//        entries.push(result);
-//      })
-//      console.log(entries);
-//    })
-
-//    col.find().toArray(function(err, docs) {
-//      if (err) throw err;
-//      entries = docs;
-//    });
-  } 
-}
