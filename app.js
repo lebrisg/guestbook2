@@ -108,7 +108,7 @@ app.post("/new-entry", function(request, response) {
 
 app.get("/delete-entry", function(request, response) {
   const queryObject = url.parse(request.url, true).query;
-  //console.log(JSON.stringify(queryObject.title));
+  console.log(JSON.stringify(queryObject.title));
 
 //  for(var i=0; i<entries.length; i++) {
 //    if( entries[i].title == queryObject.title ) {
