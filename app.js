@@ -4,6 +4,7 @@ var express = require("express");
 var morgan = require("morgan");
 var bodyParser = require("body-parser");
 var mongodb = require('mongodb');
+var url = require('url');
 var app = express();
 
 app.set("views", path.resolve(__dirname, "views")); // path.resolve or path.join?
@@ -106,6 +107,9 @@ app.post("/new-entry", function(request, response) {
 });
 
 app.get("/delete-entry", function(request, response) {
+  const queryObject = url.parse(request.url, true).query;
+  console.log(queryObject);
+
   //response.render("index");
   response.redirect("/");
 });
