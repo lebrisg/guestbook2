@@ -187,6 +187,7 @@ function loadDb() {
       result.forEach(function(entry) {
         entries.push(entry);
       });
+      console.log('result=');
       console.log(JSON.stringify(entries));
     }); 
 
