@@ -111,8 +111,12 @@ app.get("/delete-entry", function(request, response) {
   //console.log(JSON.stringify(queryObject.title));
 
   for(var i=0; i<entries.length; i++) {
-    if( entries[i].title == queryObject.title ) {
-      entries.splice(i, 1); 
+    if(entries[i].title == queryObject.title) {
+      entries.splice(i, 1);
+      if(db) {
+        var col = db.collection('records');
+        col.remove({title: queryObject.title}, true);
+      } 
       break;
     } 
   } 
