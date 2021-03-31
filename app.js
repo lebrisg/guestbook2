@@ -167,6 +167,7 @@ function initDb() {
       console.log(JSON.stringify(result));
       result.forEach(function(entry) {
         entries.push(entry);
+      });
       console.log('result=');
       console.log(JSON.stringify(entries));
     });
