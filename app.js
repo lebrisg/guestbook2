@@ -173,16 +173,21 @@ function loadDb() {
     // Create a new collection called records
     var col = db.collection('records');
 
-    console.log('count: ', col.count());
+    col.find().toArray((err, result) => {
+      console.log(JSON.stringify(result));
+    }); 
 
-    col.find(function(err, data) {
-      if(err) console.log(err);
+//    console.log('count: ', col.count());
 
-      data.forEach(function(result) {
-        entries.push(result);
-      })
-      console.log(entries);
-    })
+//    col.find(function(err, data) {
+//      if(err) console.log(err);
+
+//      data.forEach(function(result) {
+//        entries.push(result);
+//      })
+//      console.log(entries);
+//    })
+
 //    col.find().toArray(function(err, docs) {
 //      if (err) throw err;
 //      entries = docs;
