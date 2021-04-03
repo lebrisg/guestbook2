@@ -79,8 +79,8 @@ app.post("/new-entry", function(request, response) {
 //    } 
 //  } 
 
-  response.redirect("/");
-});
+//  response.redirect("/");
+//});
 
 app.use(function(request, response) {
   response.status(404).render("404");
