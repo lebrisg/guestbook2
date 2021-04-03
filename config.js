@@ -1,14 +1,14 @@
-let port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
+var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
     ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
     mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
     mongoURLLabel = "";
 
 if (mongoURL == null) {
-  let mongoHost, mongoPort, mongoDatabase, mongoPassword, mongoUser;
+  var mongoHost, mongoPort, mongoDatabase, mongoPassword, mongoUser;
 
   // If using plane old env vars via service discovery
   if (process.env.DATABASE_SERVICE_NAME) {
-    let mongoServiceName = process.env.DATABASE_SERVICE_NAME.toUpperCase();
+    var mongoServiceName = process.env.DATABASE_SERVICE_NAME.toUpperCase();
     mongoHost = process.env[mongoServiceName + '_SERVICE_HOST'];
     mongoPort = process.env[mongoServiceName + '_SERVICE_PORT'];
     mongoDatabase = process.env[mongoServiceName + '_DATABASE'];
@@ -20,7 +20,7 @@ if (mongoURL == null) {
     mongoDatabase = process.env.database_name;
     mongoPassword = process.env.password;
     mongoUser = process.env.username;
-    let mongoUriParts = process.env.uri && process.env.uri.split("//");
+    var mongoUriParts = process.env.uri && process.env.uri.split("//");
     if (mongoUriParts.length == 2) {
       mongoUriParts = mongoUriParts[1].split(":");
       if (mongoUriParts && mongoUriParts.length == 2) {
@@ -41,7 +41,7 @@ if (mongoURL == null) {
   }
 }
 
-export function = {
+var config = {
   port:          port,
   ip:            ip,
   mongoURL:      mongoURL,
@@ -52,4 +52,6 @@ export function = {
   mongoDatabase: mongoDatabase,
   mongoPassword: mongoPassword,
   mongoUser:     mongoUser
-}
+};
+
+module.exports = config;
