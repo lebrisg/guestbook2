@@ -32,6 +32,8 @@ app.use(morgan("combined"));
 // Parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
+console.log("port:"+config.port+", ip:"+config.ip+", mongoURL:"+config.mongoURL+", mongoURLLabel:"+config.mongoURLLabel+", mongoServiceName:"+config.mongoServiceName+", mongoHost:"+config.mongoHost+", mongoPort:"+config.mongoPort+", mongoDatabase:"+config.mongoDatabase+", mongoPassword:"+config.mongoPassword+", mongoUser:"+config.mongoUser);
+
 // Set the MongoDB connection
 initDB();
 
