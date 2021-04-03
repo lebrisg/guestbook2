@@ -64,23 +64,23 @@ app.post("/new-entry", function(request, response) {
   response.redirect("/");
 });
 
-//app.get("/delete-entry", function(request, response) {
-//  const queryObject = url.parse(request.url, true).query;
+app.get("/delete-entry", function(request, response) {
+  const queryObject = url.parse(request.url, true).query;
   //console.log(JSON.stringify(queryObject.title));
 
-//  for(var i=0; i<entries.length; i++) {
-//    if(entries[i].title == queryObject.title) {
-//      entries.splice(i, 1);
-//      if(db) {
-//        var col = db.collection('records');
-//        col.remove({title: queryObject.title}, true);
-//      } 
-//      break;
-//    } 
-//  } 
+  for(var i=0; i<entries.length; i++) {
+    if(entries[i].title == queryObject.title) {
+      entries.splice(i, 1);
+      if(db) {
+        var col = db.collection('records');
+        col.remove({title: queryObject.title}, true);
+      } 
+      break;
+    } 
+  } 
 
-//  response.redirect("/");
-//});
+  response.redirect("/");
+});
 
 app.use(function(request, response) {
   response.status(404).render("404");
