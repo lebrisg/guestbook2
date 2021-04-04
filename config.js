@@ -54,7 +54,7 @@ var config = {
   mongoUser:     mongoUser
 };
 
-function display() {
+module.exports = function display() {
   console.log("port:"+config.port+", ip:"+config.ip);
   console.log("mongoURL:"+config.mongoURL+", mongoURLLabel:"+config.mongoURLLabel);
   console.log("mongoServiceName:"+config.mongoServiceName+", mongoHost:"+config.mongoHost+", mongoPort:"+config.mongoPort);
@@ -62,4 +62,3 @@ function display() {
 }
 
 module.exports = config;
-module.exports = display;
