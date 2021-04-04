@@ -64,7 +64,7 @@ function display() {
 exports.port = port;
 exports.ip = ip;
 exports.mongoURL = mongoURL;
-exports.mongoURLLABEL = mongoURLLABEL;
+exports.mongoURLLabel = mongoURLLabel;
 exports.mongoServiceName = mongoServiceName;
 exports.mongoHost = mongoHost;
 exports.mongoPort = mongoPort;
