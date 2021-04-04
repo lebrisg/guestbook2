@@ -61,5 +61,5 @@ function display() {
   console.log("mongoDatabase: "+config.mongoDatabase+", mongoPassword: "+config.mongoPassword+", mongoUser: "+config.mongoUser);
 }
 
-exports.display = display;
 exports.config = config;
+exports.display = display;
