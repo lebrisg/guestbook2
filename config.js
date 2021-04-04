@@ -41,25 +41,35 @@ if (mongoURL == null) {
   }
 }
 
-var config = {
-  port:          port,
-  ip:            ip,
-  mongoURL:      mongoURL,
-  mongoURLLabel: mongoURLLabel,
-  mongoServiceName: mongoServiceName,
-  mongoHost:     mongoHost,
-  mongoPort:     mongoPort,  
-  mongoDatabase: mongoDatabase,
-  mongoPassword: mongoPassword,
-  mongoUser:     mongoUser
-};
+//var config = {
+//  port:          port,
+//  ip:            ip,
+//  mongoURL:      mongoURL,
+//  mongoURLLabel: mongoURLLabel,
+//  mongoServiceName: mongoServiceName,
+//  mongoHost:     mongoHost,
+//  mongoPort:     mongoPort,  
+//  mongoDatabase: mongoDatabase,
+//  mongoPassword: mongoPassword,
+//  mongoUser:     mongoUser
+//};
 
 function display() {
-  console.log("port: "+config.port+", ip: "+config.ip);
-  console.log("mongoURL: "+config.mongoURL+", mongoURLLabel: "+config.mongoURLLabel);
-  console.log("mongoServiceName: "+config.mongoServiceName+", mongoHost: "+config.mongoHost+", mongoPort: "+config.mongoPort);
-  console.log("mongoDatabase: "+config.mongoDatabase+", mongoPassword: "+config.mongoPassword+", mongoUser: "+config.mongoUser);
+  console.log("port: "+port+", ip: "+ip);
+  console.log("mongoURL: "+mongoURL+", mongoURLLabel: "+mongoURLLabel);
+  console.log("mongoServiceName: "+mongoServiceName+", mongoHost: "+mongoHost+", mongoPort: "+mongoPort);
+  console.log("mongoDatabase: "+mongoDatabase+", mongoPassword: "+mongoPassword+", mongoUser: "+mongoUser);
 }
 
-exports.config = config;
+exports.port = port;
+exports.ip = ip;
+exports.mongoURL = mongoURL;
+exports.mongoURLLABEL = mongoURLLABEL;
+exports.mongoServiceName = mongoServiceName;
+exports.mongoHost = mongoHost;
+exports.mongoPort = mongoPort;
+exports.mongoDatabase = mongoDatabase;
+exports.mongoPassword = mongoPassword;
+exports.mongoUser = mongoUser;
+
 exports.display = display;
