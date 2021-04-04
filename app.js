@@ -33,7 +33,7 @@ app.use(morgan("combined"));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 config.display();
-console.log("port:"+config.port+", ip:"+config.ip+", mongoURL:"+config.mongoURL+", mongoURLLabel:"+config.mongoURLLabel+", mongoServiceName:"+config.mongoServiceName+", mongoHost:"+config.mongoHost+", mongoPort:"+config.mongoPort+", mongoDatabase:"+config.mongoDatabase+", mongoPassword:"+config.mongoPassword+", mongoUser:"+config.mongoUser);
+//console.log("port:"+config.port+", ip:"+config.ip+", mongoURL:"+config.mongoURL+", mongoURLLabel:"+config.mongoURLLabel+", mongoServiceName:"+config.mongoServiceName+", mongoHost:"+config.mongoHost+", mongoPort:"+config.mongoPort+", mongoDatabase:"+config.mongoDatabase+", mongoPassword:"+config.mongoPassword+", mongoUser:"+config.mongoUser);
 
 // Set the MongoDB connection
 initDB();
