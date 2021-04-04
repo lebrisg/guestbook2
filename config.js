@@ -54,11 +54,12 @@ var config = {
   mongoUser:     mongoUser
 };
 
-module.exports = function display() {
+function display() {
   console.log("port:"+config.port+", ip:"+config.ip);
   console.log("mongoURL:"+config.mongoURL+", mongoURLLabel:"+config.mongoURLLabel);
   console.log("mongoServiceName:"+config.mongoServiceName+", mongoHost:"+config.mongoHost+", mongoPort:"+config.mongoPort);
   console.log("mongoDatabase:"+config.mongoDatabase+", mongoPassword:"+config.mongoPassword+", mongoUser:"+config.mongoUser);
 }
 
-module.exports = config;
+exports.config = config;
+exports.display = display;
