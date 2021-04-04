@@ -55,11 +55,11 @@ var config = {
 };
 
 function display() {
-  console.log("port:"+config.port+", ip:"+config.ip);
-  console.log("mongoURL:"+config.mongoURL+", mongoURLLabel:"+config.mongoURLLabel);
-  console.log("mongoServiceName:"+config.mongoServiceName+", mongoHost:"+config.mongoHost+", mongoPort:"+config.mongoPort);
-  console.log("mongoDatabase:"+config.mongoDatabase+", mongoPassword:"+config.mongoPassword+", mongoUser:"+config.mongoUser);
+  console.log("port: "+config.port+", ip: "+config.ip);
+  console.log("mongoURL: "+config.mongoURL+", mongoURLLabel: "+config.mongoURLLabel);
+  console.log("mongoServiceName: "+config.mongoServiceName+", mongoHost: "+config.mongoHost+", mongoPort: "+config.mongoPort);
+  console.log("mongoDatabase: "+config.mongoDatabase+", mongoPassword: "+config.mongoPassword+", mongoUser: "+config.mongoUser);
 }
 
-exports.config = config;
 exports.display = display;
+exports.config = config;
