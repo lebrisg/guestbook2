@@ -100,6 +100,10 @@ http.createServer(app).listen(config.port, function() {
 });
 
 function initDB() {
+  if(!config.mongoURL) {
+    console.log("Bad config parameter!");
+    return;
+  }
   mongodb.connect(config.mongoURL, function(err, conn) {
     if (err) {
       console.log("Can't connect to MongoDB!");
