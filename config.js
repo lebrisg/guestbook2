@@ -33,10 +33,12 @@ if (mongoURL == null) {
 
   // If using env vars from secret mongodb  
   else if (process.env["database-user"]) {
-    console.log("OK");
-    mongoDatabase = console.log(process.env["database-name"]);
-    mongoPassword = console.log(process.env["database-password"]);
-    mongoUser = console.log(process.env["database-user"]);
+    //console.log("OK");
+    mongoDatabase = process.env["database-name"];
+    mongoPassword = process.env["database-password"];
+    mongoUser = process.env["database-user"];
+    mongoHost = "127.0.0.1";
+    mongoPort = 27017;
   }
 
   if (mongoHost && mongoPort && mongoDatabase) {
