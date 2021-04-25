@@ -4,7 +4,7 @@ var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
     mongoURLLabel = "";
 
 console.log(process.env.database_user);
-console.log(process.env.database-user);
+//console.log(process.env.database-user);
 console.log(process.env["database_user"]);
 console.log(process.env["database-user"]);
 
