@@ -14,9 +14,10 @@ if (mongoURL == null) {
     mongoDatabase = process.env[mongoServiceName + '_DATABASE'];
     mongoPassword = process.env[mongoServiceName + '_PASSWORD'];
     mongoUser = process.env[mongoServiceName + '_USER'];
+  }
 
   // If using env vars from secret from service binding  
-  } else if (process.env.database_name) {
+  else if (process.env.database_name) {
     mongoDatabase = process.env.database_name;
     mongoPassword = process.env.password;
     mongoUser = process.env.username;
@@ -28,13 +29,13 @@ if (mongoURL == null) {
         mongoPort = mongoUriParts[1];
       }
     }
+  }
 
   // If using env vars from secret mongodb  
-  } else if (process.env.database_user) {
+  else if (process.env.database_user) {
     mongoDatabase = process.env.database_name;
     mongoPassword = process.env.database_password;
     mongoUser = process.env.database_username;
-    }
   }
 
   if (mongoHost && mongoPort && mongoDatabase) {
