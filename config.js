@@ -33,6 +33,7 @@ if (mongoURL == null) {
 
   // If using env vars from secret mongodb  
   else if (process.env.database_user) {
+    console.log("OK");
     mongoDatabase = process.env.database_name;
     mongoPassword = process.env.database_password;
     mongoUser = process.env.database_username;
