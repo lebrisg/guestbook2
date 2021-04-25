@@ -1,0 +1,33 @@
+NAME                          READY   STATUS    RESTARTS   AGE
+pod/guestbook2-git-15-k2fgd   1/1     Running   0          5d18h
+pod/mongodb-1-m48sh           1/1     Running   0          5d18h
+
+NAME                                      DESIRED   CURRENT   READY   AGE
+replicationcontroller/guestbook2-git-12   0         0         0       20d
+replicationcontroller/guestbook2-git-13   0         0         0       20d
+replicationcontroller/guestbook2-git-14   0         0         0       20d
+replicationcontroller/guestbook2-git-15   1         1         1       20d
+replicationcontroller/mongodb-1           1         1         1       20d
+
+NAME                     TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)     AGE
+service/guestbook2-git   ClusterIP   172.30.163.11   <none>        8080/TCP    20d
+service/mongodb          ClusterIP   172.30.56.127   <none>        27017/TCP   20d
+
+NAME                                                REVISION   DESIRED   CURRENT   TRIGGERED BY
+deploymentconfig.apps.openshift.io/guestbook2-git   15         1         1         config,image(guestbook2-git:latest)
+deploymentconfig.apps.openshift.io/mongodb          1          1         1         config,image(mongodb:3.6)
+
+NAME                                            TYPE     FROM   LATEST
+buildconfig.build.openshift.io/guestbook2-git   Source   Git    12
+
+NAME                                         TYPE     FROM          STATUS     STARTED       DURATION
+build.build.openshift.io/guestbook2-git-9    Source   Git@3573b04   Complete   2 weeks ago   28s
+build.build.openshift.io/guestbook2-git-10   Source   Git@ebb13c0   Complete   2 weeks ago   29s
+build.build.openshift.io/guestbook2-git-11   Source   Git@6ca2fd7   Complete   2 weeks ago   27s
+build.build.openshift.io/guestbook2-git-12   Source   Git@647eb6e   Complete   2 weeks ago   28s
+
+NAME                                            IMAGE REPOSITORY                                                                         TAGS     UPDATED
+imagestream.image.openshift.io/guestbook2-git   default-route-openshift-image-registry.apps.ocp4.asducode.fr/guestbook2/guestbook2-git   latest   2 weeks ago
+
+NAME                                      HOST/PORT                                         PATH   SERVICES         PORT       TERMINATION   WILDCARD
+route.route.openshift.io/guestbook2-git   guestbook2-git-guestbook2.apps.ocp4.asducode.fr          guestbook2-git   8080-tcp                 None

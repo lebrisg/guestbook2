@@ -30,6 +30,14 @@ if (mongoURL == null) {
     }
   }
 
+  // If using env vars from secret mongodb  
+  } else if (process.env.database_user) {
+    mongoDatabase = process.env.database_name;
+    mongoPassword = process.env.database_password;
+    mongoUser = process.env.database_username;
+    }
+  }
+
   if (mongoHost && mongoPort && mongoDatabase) {
     mongoURLLabel = mongoURL = 'mongodb://';
     if (mongoUser && mongoPassword) {
@@ -40,19 +48,6 @@ if (mongoURL == null) {
     mongoURL += mongoHost + ':' +  mongoPort + '/' + mongoDatabase;
   }
 }
-
-//var config = {
-//  port:          port,
-//  ip:            ip,
-//  mongoURL:      mongoURL,
-//  mongoURLLabel: mongoURLLabel,
-//  mongoServiceName: mongoServiceName,
-//  mongoHost:     mongoHost,
-//  mongoPort:     mongoPort,  
-//  mongoDatabase: mongoDatabase,
-//  mongoPassword: mongoPassword,
-//  mongoUser:     mongoUser
-//};
 
 function display() {
   console.log("port: "+port+", ip: "+ip);
