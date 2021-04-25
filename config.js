@@ -3,6 +3,11 @@ var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
     mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
     mongoURLLabel = "";
 
+console.log(process.env.database_user);
+console.log(process.env.database-user);
+console.log(process.env["database_user"]);
+console.log(process.env["database-user"]);
+
 if (mongoURL == null) {
   var mongoHost, mongoPort, mongoDatabase, mongoPassword, mongoUser;
 
