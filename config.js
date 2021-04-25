@@ -28,7 +28,6 @@ if (mongoURL == null) {
         mongoPort = mongoUriParts[1];
       }
     }
-  }
 
   // If using env vars from secret mongodb  
   } else if (process.env.database_user) {
