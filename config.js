@@ -3,12 +3,6 @@ var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
     mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
     mongoURLLabel = "";
 
-console.log(process.env['MONGODB_SERVICE_HOST']);
-console.log(process.env['MONGODB_SERVICE_PORT']);
-console.log(process.env['MONGODB_DATABASE']);
-console.log(process.env['MONGODB_PASSWORD']);
-console.log(process.env['MONGODB_USER']);
-
 if (mongoURL == null) {
   var mongoHost, mongoPort, mongoDatabase, mongoPassword, mongoUser;
 
@@ -44,8 +38,8 @@ if (mongoURL == null) {
     mongoDatabase = process.env["database-name"];
     mongoPassword = process.env["database-password"];
     mongoUser = process.env["database-user"];
-    mongoHost = "127.0.0.1";
-    mongoPort = 27017;
+    mongoHost = process.env['MONGODB_SERVICE_HOST'];
+    mongoPort = process.env['MONGODB_SERVICE_PORT'];
   }
 
   if (mongoHost && mongoPort && mongoDatabase) {
