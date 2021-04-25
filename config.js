@@ -3,11 +3,6 @@ var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
     mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
     mongoURLLabel = "";
 
-console.log(process.env.database_user);
-//console.log(process.env.database-user);
-console.log(process.env["database_user"]);
-console.log(process.env["database-user"]);
-
 if (mongoURL == null) {
   var mongoHost, mongoPort, mongoDatabase, mongoPassword, mongoUser;
 
@@ -37,11 +32,11 @@ if (mongoURL == null) {
   }
 
   // If using env vars from secret mongodb  
-  else if (process.env.database_user) {
+  else if (process.env["database-user"]) {
     console.log("OK");
-    mongoDatabase = process.env.database_name;
-    mongoPassword = process.env.database_password;
-    mongoUser = process.env.database_username;
+    mongoDatabase = console.log(process.env["database-name"]);
+    mongoPassword = console.log(process.env["database-password"]);
+    mongoUser = console.log(process.env["database-user"]);
   }
 
   if (mongoHost && mongoPort && mongoDatabase) {
