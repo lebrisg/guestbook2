@@ -14,6 +14,10 @@ app.set("view engine", "ejs");
 var db = null,
     dbDetails = new Object();
 
+// Define health checks
+app.get("/ready", (req, res) => res.status(200).json({ status: "ok" }));
+app.get("/live", (req, res) => res.status(200).json({ status: "ok" }));
+
 // Use the prom-client module to expose our metrics to Prometheus
 const client = require('prom-client');
 
